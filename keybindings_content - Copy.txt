@@ -1,0 +1,39 @@
+// keybindings.json ; path: C:\Users\Ivica\AppData\Roaming\Code\User
+// Place your key bindings in this file to override the defaults
+[
+    { "key": "ctrl+alt+m", "command": "workbench.action.toggleMaximizedPanel" },
+    { "key": "ctrl+j", "command": "workbench.action.togglePanel" },
+    { "key": "shift+a", "command": "workbench.action.terminal.focusNext", "when": "terminalFocus" },
+    { "key": "shift+b", "command": "workbench.action.terminal.focusPrevious", "when": "terminalFocus" },
+    { "key": "shift+n", "command": "workbench.action.terminal.new", "when": "terminalFocus" },
+    { "key": "shift+c", "command": "workbench.action.terminal.kill", "when": "terminalFocus" },
+   
+    
+// j/k to move between split terminals, h to move back to the editor
+    { "key": "ctrl+w j",
+        "command": "workbench.action.terminal.focusNextPane", "when": "terminalFocus" },
+    { "key": "ctrl+w k",
+        "command": "workbench.action.terminal.focusPreviousPane", "when": "terminalFocus" },
+    { "key": "ctrl+w h",
+        "command": "workbench.action.focusActiveEditorGroup", "when": "terminalFocus" },
+
+    // j/k to move between "open editors", the explorer tree, and outline;
+    // l to move back to the editor
+    { "key": "ctrl+w k",
+        "command": "workbench.files.action.focusOpenEditorsView", "when": "filesExplorerFocus" },
+    { "key": "ctrl+w j",
+        "command": "workbench.files.action.focusFilesExplorer", "when": "openEditorsFocus" },
+    { "key": "ctrl+w l",
+        "command": "workbench.action.focusActiveEditorGroup", "when": "explorerViewletFocus" },
+    { "key": "ctrl+w j",
+        "command": "outline.focus", "when": "filesExplorerFocus" },
+    { "key": "ctrl+w k",
+        "command": "workbench.files.action.focusFilesExplorer", "when": "focusedView == outline" },
+    { "key": "ctrl+w l",
+        "command": "workbench.action.focusActiveEditorGroup", "when": "focusedView == outline" },
+        // focusedView = outline
+    //FILE TREE
+    { "key" : "ctrl+n", "command": "explorer.newFile", "when": "explorerViewletFocus" },
+    { "key" : "ctrl+shift+n", "command": "explorer.newFolder", "when": "explorerViewletFocus" },
+//    { "key" : "ctrl+shift+n", "command": "workbench.action.newWindow", "when": "!explorerViewletFocus" },
+]
