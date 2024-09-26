@@ -1,0 +1,16 @@
+g++ -o gpptest -g gpptest.cpp & gpptest.exe input.txt > output.txt
+
+-g  ;include dbg symbols
+-S  ;compile to asm (gcc -S -o file.S file.c)
+
+-- asembler
+as -o file.o file.S (then gcc -o file file.S)
+
+--check .exe for (debug) symbols
+objdump --syms <executable-file>
+
+
+--------------------------
+vscode
+CTRL + SHIFT + P - command pallete
+C/C++ Rescan Workspace - fix intellisense

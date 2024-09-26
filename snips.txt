@@ -1,0 +1,11 @@
+ // g++:
+	std::vector<std::pair<int, int>> v = { {1,10}, {2,20}, {3,30} };
+	std::unordered_map<int, int> map(v.begin(), v.end());
+
+	cout << argc;
+	for(int i = 0; i < argc; i++){
+		cout << "[" << i << "] - " << argv[i] << std::endl;
+	}
+
+
+

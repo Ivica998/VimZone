@@ -1,0 +1,319 @@
+// two sums
+class Solution
+{
+public:
+	vector<int> twoSum(vector<int> &nums, int target) {
+		unordered_map<int, int> found;
+		int idx = 0;     
+		for(auto& num : nums){
+			if(found.count(target - num) > 0) {
+				return {found[target - num], idx};
+			}
+			found.insert({num, idx++});
+		}	
+		return {0,0};
+	}
+};
+
+//palindrome number
+class Solution {
+public:
+    bool isPalindrome(int x) {
+		string str = to_string(x);
+		int n = str.length()/2;
+		auto itb = str.begin();
+		auto ite = str.rbegin();
+		while (n-- > 0){
+			if(*itb != *ite) return false;
+			++itb; ++ite;	
+		}
+		return true;	
+    }
+};
+
+//roman integer
+class Solution {
+public:
+    int romanToInt(string s) {
+		unordered_map<char,int> roman = {
+			{'I', 1},
+			{'V', 5},
+			{'X', 10},
+			{'L', 50},
+			{'C', 100},
+			{'D', 500},
+			{'M', 1000},
+		};
+		int max = 0; int cur = 0; int total = 0;
+		for(auto rit = s.rbegin(); rit != s.rend(); ++rit){
+			cur = roman[*rit];
+			if(cur >= max){
+				max = cur;
+				total += cur;
+			} else { total -= cur; }
+		}
+		return total;
+    }
+};
+
+// longest-common-prefix
+class Solution {
+public:
+    string longestCommonPrefix(vector<string>& strs) {
+        string ret = "";
+        if(strs.size() == 0) return ret;
+        int n = strs[0].size();
+        int x = 0; char cur;
+        while (n--) {
+            cur = strs[0][x];
+            for (int i = 1; i < strs.size(); i++) {
+                if(strs[i][x] != cur) return ret;
+            }
+            ret += strs[0][x++];
+        }
+        return ret; 
+    }
+};
+
+// valid-parentheses
+class Solution {
+public:
+    bool isValid(string s) {
+        unordered_set<char> op { '(', '[', '{' };
+        unordered_map<char,char> ed {
+            {')', '('},
+            {']', '['},
+            {'}', '{'}, };
+        std::stack<char> stack;
+        for (int i = 0; i < s.size(); ++i) {
+            char ch = s[i];
+            if(op.count(ch) > 0){ stack.push(ch); continue; }
+            if(ed.count(ch) > 0){ 
+                if(stack.empty()) return false;
+                if(stack.top() != ed[ch]) return false;
+                stack.pop(); continue; }
+            return false; }
+        return stack.empty();
+    }
+};
+
+// merge-two-sorted-lists 
+class Solution {
+public:
+    ListNode* mergeTwoLists(ListNode* list1, ListNode* list2) {
+        if(list1 == nullptr) return list2;
+        if(list2 == nullptr) return list1;
+        ListNode *tail, *head, **tmp;
+        tmp = (list1->val <= list2->val) ? &list1 : &list2;
+        head = tail = *tmp; *tmp = (*tmp)->next;
+        while(list1 && list2){
+            tmp = (list1->val <= list2->val) ? &list1 : &list2;
+               tail->next = *tmp;
+               tail = *tmp;
+               *tmp = (*tmp)->next; 
+        }
+        if(list1 == nullptr){ tail->next = list2; }
+        if(list2 == nullptr){ tail->next = list1; }
+        return head;
+    }
+};
+
+// remove-duplicates-from-sorted-array
+class Solution {
+public:
+    int removeDuplicates(vector<int>& nums) {
+        int n = nums.size(), p = 1, last;
+        if(n == 0) return 0;
+        last = nums[0];
+        for(int i = 1; i < n; ++i) {
+           if(nums[i] != last) {
+            last = nums[i];
+            if(i != p) nums[p] = nums[i]; p++;
+           }
+        }       
+    return p;
+    }
+};
+
+// remove-element
+class Solution {
+public:
+    int removeElement(vector<int>& nums, int val) {
+        int j = 0;
+        for(int i = 0; i < nums.size(); ++i) {
+            if(nums[i] != val) {
+                nums[j++] = nums[i]; 
+            }
+        } return j;
+    }
+};
+
+// find-the-index-of-the-first-occurrence-in-a-string
+class Solution {
+public:
+    int strStr(string haystack, string needle) {
+        int hsize = haystack.size();
+        int nsize = needle.size(); int j;
+        if(hsize < nsize) return -1;
+        for(int i = 0; i < hsize; ++i){
+            if(haystack[i] == needle[0]){
+                j = 1;
+                for(; j < nsize; ++j) {
+                    if(haystack[i+j] != needle[j]) break; }
+                if (j == nsize) return i;
+            } } return -1;
+    }
+};
+
+// search-insert-position
+class Solution {
+public:
+    int searchInsert(vector<int> &nums, int target) {
+        int n = nums.size();
+        int max = n - 1, min = 0;
+        if (nums[max] < target) return max + 1;
+        while (min <= max) {
+            n = (max + min) / 2;
+            if (nums[n] == target) return n;
+            if (nums[n] <= target)
+                min = n + 1;
+            else 
+                max = n - 1;
+        }
+        return min;
+    }
+};
+
+// length-of-last-word
+class Solution {
+public:
+    int lengthOfLastWord(string s) {
+       int ret = 0;
+       for(int i = s.size() - 1; i >= 0; --i) {
+            if(s[i] == ' ') continue;
+            ret = i; --i;
+            while(i >= 0) {
+                if(s[i] == ' ') break; 
+                --i;
+            } 
+            return ret - i;
+       } 
+       return ret;
+    }
+};
+
+// plus-one
+class Solution {
+public:
+    vector<int> plusOne(vector<int>& digits) {
+       for(int i = digits.size() - 1; i >= 0; --i){
+        digits[i] += 1;
+        if(digits[i] > 9) digits[i] = 0;
+        else return digits;
+       }
+       digits.insert(digits.begin(), 1);
+       return digits;
+    }
+}
+
+// add-binary
+class Solution {
+public:
+    string addBinary(string a, string b) {
+       int n = std::max(a.size(), b.size());         
+       string ret = "";
+       if(n < 0) return ret;
+       int ax = a.size() - n;
+       int bx = b.size() - n;
+       int carry = 0, total;
+       for(int i = n - 1; i >= 0; --i) {
+            total = carry;
+            if(ax + i >= 0) total += a[ax + i] - '0';
+            if(bx + i >= 0) total += b[bx + i] - '0';
+            switch (total) {
+            case 3: ret += '1'; carry = 1; break;
+            case 2: ret += '0'; carry = 1; break;
+            case 1: ret += '1'; carry = 0; break;
+            case 0: ret += '0'; carry = 0; break;
+            default: break;
+            }
+       }
+       n = ret.size() - 1;
+       char tmp; int i = 0;
+       while(i<=n) {
+            tmp = ret[i];
+            ret[i] = ret[n];
+            ret[n] = tmp;
+            i++; n--;
+       }
+       if(carry){ ret = "1" + ret; }
+       return ret;
+    }
+};
+
+// sqrtx
+class Solution
+{ public:
+     int twoOnN(int n) { int ret = 1; while (n--){ ret *= 2; } return ret; }
+     int mySqrt(int x) {
+          int ret, max = 46340, min = 0, total; float num;
+          while(min <= max) {
+               num = (min + max)/2; total = num * num;
+               if(total == x) { ret = num; break; }
+               if(total < x) { min = num + 1; ret = num; }
+               else { max = num - 1; } }
+          double precise = ret;
+          double fmax = ret + 1; double fmin = ret - 1;
+          double ftotal; double fnum; int j = 15;
+          while (j--) {
+               fnum = (fmin + fmax)/2;
+               ftotal = fnum * fnum;
+               if(ftotal == x) { ret = fnum; break; }
+               if(ftotal < x) { fmin = fnum; }
+               else fmax = fnum; ret = fnum;  }
+          return ret;
+     }
+};
+
+// remove-duplicates-from-sorted-list
+class Solution {
+public:
+    ListNode* deleteDuplicates(ListNode* head) {
+         ListNode* cur = head;
+         ListNode* inner;
+         while(cur) {
+            if(cur->next && cur->val == cur->next->val){
+                inner = cur->next->next;
+                while (inner){
+                   if(inner->val != cur->val) break;
+                   inner = inner->next; 
+                }
+                cur->next = inner;
+            }
+            cur = cur->next;
+         }
+         return head;
+    }
+};
+
+// merge-sorted-array
+class Solution {
+public:
+    void merge(vector<int>& nums1, int m, vector<int>& nums2, int n) {
+        int k = m + n - 1;
+        if(n == 0) return;
+        m--; n--;
+        while(k >= 0 && n >= 0 && m >=0){
+            if(nums1[m] >= nums2[n])
+                nums1[k] = nums1[m--];
+            else
+                nums1[k] = nums2[n--];
+            k--;    
+        }
+        while (n >= 0) {
+            nums1[k--] = nums2[n--];
+        }
+    }
+};
+
+// 

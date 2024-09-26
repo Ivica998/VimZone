@@ -1,0 +1,126 @@
+ctrl + b to move a page screen back or “up”
+ctrl + f to move a page screen front or “down”
+ctrl + u to move a ½ page screen up.
+ctrl + d to move a ½ page screen down.
+,
+q<reg> - begins recording in <reg>
+while recording
+	q - ends recording
+@<reg> - playbacks recorded actions
+,
+[{ - jump to cur scope opening {
+]} - jump to cur scope closing }
+:s/x/y/o - substitute x with y using 'o' options
+	:[range]s
+		% - global search
+		x,y - from x to y line
+	g - global or just first instance
+	c - with confirmation
+	i/I - case sensit or insesitive
+:w <first_file_name>
+:wa - save all changes to all buffers/files
+:saveas <other_file_name>
+:e <file_name> - creates new or opens existing file
+:ls - lists buffers (also :buffers)
+:new filename.txt - creates new buffer
+:bd - close buffer (still can access); 
+:bw - full close (whole file)
+:e! - reload buffer and discard unsaved changes
+:enew - creates empty buffer not associated with any file
+:b N - switch buffer ; N is either number from list or file_name
+:b# - switch to previous(alternate) buffer
+:wq - save and close
+CTRL + R + <reg_name> - register paste while in insert mode
+redir => output - redirect output to variable 'output'
+redir END - ends redirection
+w - word
+b - back word
+f - next letter in line
+F- previous letter in line
+/ - search forward
+? - search back
+v - select
+d - delete
+c - cut
+x - delete 1 char
+r - replace 1 char
+R - replace mode
+s - substitute (del 1 char then input mode)
+c - change (del + input)
+a - append
+"+p - clipboard paste ( + i * za system)
+gp - cursor dole posle paste
+:sp [<filename>] - split
+:vsp - vert split
+:edit or :e
+:new  and  :vnew
+:ls - show files/buffers
+:args - show args
+:argadd
+:bf            # Go to first file.
+:bl            # Go to last file
+:bn            # Go to next file.
+:bp            # Go to previous file.
+:bw            # Close file.
+:tabe <filename> - tabs
+gt - next
+gT - back
+num + gt
+ctrl + w
+	+t - top-left
+	+b - bot-right
+	+s - slit horiz
+	+v - split vert
+	+n - new
+	+r - shift forward
+	+R - shift backward
+	+q - quit(yes vim if last)
+	+w - next
+	+c - close(not vim)
+	+o - only this left, rest close
+	+num + + - resize
+	+num + - - resize
+	Ctrl+W +/-: increase/decrease height (ex. 20<C-w>+)
+	Ctrl+W >/<: increase/decrease width (ex. 30<C-w><)
+	Ctrl+W _: set height (ex. 50<C-w>_)
+	Ctrl+W |: set width (ex. 50<C-w>|)
+	Ctrl+W =: equalize width and height of all windows
+	:resize [+-]N - resize a horizontal split
+	:res [+-]N
+	:vertical resize [+-]N - if no [+-], then its setting
+:s/\%V\(.*\)\%V/"\1"/
+	s/old/new/ is the usual substitute command.
+	\%V is an under-documented atom to mark the beginning of the selected text
+	\(.*\) selects everything and save it into selection 1.
+	The second \%V signifies the end of the selected text.
+	The replacement text is everyting that was selected, which is stored in \1, surrounded by quotes: "\1".
+,
+Quote a word, using single quotes ciw'Ctrl+r"'
+ciw - Delete the word the cursor is on, and end up in insert mode.
+' - add the first quote.
+Ctrl+r" - Insert the contents of the " register, aka the last yank/delete.
+' - add the closing quote.
+
+Unquote a word that's enclosed in single quotes di'hPl2x
+di' - Delete the word enclosed by single quotes.
+hP - Move the cursor left one place (on top of the opening quote) and put the just deleted text before the quote.
+l - Move the cursor right one place (on top of the opening quote).
+2x - Delete the two quotes.
+
+Change single quotes to double quotes va':s/\%V'\%V/"/g
+va' - Visually select the quoted word and the quotes.
+:s/ - Start a replacement.
+\%V'\%V - Only match single quotes that are within the visually selected region.
+/"/g - Replace them all with double quotes.
+
+
+---------------------------------------------
+in .vimrc
+" - comment till the end of line
+order doesnt matter for mappings
+
+" This is a comment about resizing
+z0<CR>  " Minimize the window
+z=      " Equalize the window sizes
+z99<CR>  " Maximize the window height
+nnoremap z= <C-w> =     " Map z= to equalize window sizes
