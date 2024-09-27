@@ -66,6 +66,8 @@ gp - cursor dole posle paste
 gt - next
 gT - back
 num + gt
+:tabmove N - move tab to N
+:tabmove +N - move to cur + N
 ctrl + w
 	+t - top-left
 	+b - bot-right

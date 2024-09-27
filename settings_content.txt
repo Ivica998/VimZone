@@ -1,0 +1,114 @@
+{
+    "editor.unicodeHighlight.invisibleCharacters": false,
+    "editor.unicodeHighlight.ambiguousCharacters": false,
+    "editor.minimap.enabled": false,
+    "debug.openDebug": "neverOpen",
+    /*
+    "editor.lineNumbers" : "off",
+    */
+    "editor.lineNumbers": "relative",
+    "vim.vimrc.enable": true,
+    "vim.vimrc.path": "c:\\Users\\Ivica\\Desktop\\vimZone\\.vimrc",
+    "vim.leader": "<Space>",
+    "vim.normalModeKeyBindingsNonRecursive": [
+        // switch b/w buffers
+        { "before" : ["<S-h>"], "commands": [":bprevious"]},
+        { "before" : ["<S-l>"], "commands": [":bnext"]},
+        // splits
+        { "before" : ["leader","v"], "commands": [":vsplit"]},
+        { "before" : ["leader","s"], "commands": [":split"]},
+        // paneld
+        { "before": [ "leader", "h" ], "commands": [ "workbench.action.focusLeftGroup" ] },
+        { "before": [ "leader", "j" ], "commands": [ "workbench.action.focusBelowGroup" ] },
+        { "before": [ "leader", "k" ], "commands": [ "workbench.action.focusAboveGroup" ] },
+        { "before": [ "leader", "l" ], "commands": [ "workbench.action.focusRightGroup" ] },
+        // FILE TREE
+        { "before": ["leader", "n", "j"], "commands": ["workbench.action.togglePanel"] },
+        { "before": ["leader", "n", "e"], "commands": ["workbench.explorer.fileView.focus"] },
+        // EXTRA
+        { "before": ["leader", "w"], "commands": ["workbench.action.files.save"] },        
+        { "before": ["leader", "f"], "commands": ["workbench.action.quickOpen"] },        
+        { "before": ["leader", "p"], "commands": ["editor.action.formatDocument"] },        
+        { "before": ["g", "h"], "commands": ["editor.action.showDefinitionPreviewHover"] },        
+    ],
+    "vim.visualModeKeyBindings": [
+        // indent selection
+        { "before": [ "<" ] ,"commands": ["editor.action.outdentLines"]},
+        { "before": [ ">" ] ,"commands": ["editor.action.indentLines"]},
+        // move selection up down
+        { "before": [ "J" ] ,"commands": ["editor.action.moveLinesDownAction"]},
+        { "before": [ "K" ] ,"commands": ["editor.action.moveLinesUpAction"]},
+        { "before": [ "leader", "c"] ,"commands": ["editor.action.commentline"]},
+        // toggle comment
+    ],
+    "vim.insertModeKeyBindings": [
+        { "before": ["j", "j"], "after": ["<Esc>"]}
+    ],
+    "vim.handleKeys": {
+    "<C-p>": false
+    },
+
+    "editor.lineDecorationsWidth" : 0,
+    "editor.folding" : false,
+    "editor.glyphMargin": true,
+    "files.exclude": {    
+        "**/**.spec.ts": false,
+        "**/src/**/*.css": false,
+    
+        "[!s]*/**": false,
+        "?[!r]*/**": false,
+        "??[!c]/**": false,
+        "????*/**": false,
+        
+        "*/[!ai]*/**": false,
+        "*/a[!p]*/**": false,
+        "*/ap[!p]/**": false,
+        "*/app?*/**": false,
+        
+        "*/i[!n]*/**": false,
+        "*/in[!d]*/**": false,
+        "*/ind[!e]*/**": false,
+        "*/inde[!x]*/**": false,
+        "*/index[!.]*/**": false,
+        "*/index.[!h]*/**": false,
+        "*/index.h[!t]*/**": false,
+        "*/index.ht[!m]*/**": false,
+        "*/index.htm[!l]*/**": false,
+        "*/index.html?*/**": false,
+        
+        "**/src/*.ts": true,
+        "**/src/*.ico": true,
+        
+        "**/src/app/**/*.css" : true,
+        
+        "**/*.spec.ts" : true,
+        
+     
+    },
+    "git.ignoreMissingGitWarning": true,
+    "terminal.integrated.profiles.windows": {
+        "PowerShell": {
+            "source": "PowerShell",
+            "icon": "terminal-powershell",
+        },
+        "Command Prompt": {
+            "path": [
+                "${env:windir}\\Sysnative\\cmd.exe",
+                "${env:windir}\\System32\\cmd.exe"
+            ],
+            //"args": ["-ExecutionPolicy ByPass"],
+            "icon": "terminal-cmd"
+        },
+        "Git Bash": {
+            "source": "Git Bash"
+        }
+    },
+    "terminal.integrated.defaultProfile.windows": "Command Prompt",
+    "[python]": {
+        "editor.formatOnType": true
+    },
+    "cmake.configureOnOpen": true,
+    "explorer.confirmDragAndDrop": false,
+
+    //"python.dataScience.sendSelectionToInteractiveWindow": false
+}
