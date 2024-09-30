@@ -1,3 +1,28 @@
+vscode (vim mode)
+	ctrl + , - settings
+	ctrl + alt + window + n - create new file
+	ctrl + shift + e - toggle focust file explorer
+	ctrl + p - quick open(file)
+	ctrl + shift + n - new window
+	ctrl + F4 - close tab
+	ctrl + tab - stack change tab
+	
+:set (nu)mber - turn on line numbering
+:set rnu - relative numbers
+:set ic - ignore case during search
+	hls (hlsearch) - highlight last search patter
+	is (incsearch) - highlight while typing for search 
+:N - go to line N
+gd - go to definition
+:!<commands> - execute <commands> in cmd
+:%y+ - yank whole file to system clipboard( + sign)
+:10,20y - yank from line 10 to line 20 (both inclusive)
+m<reg> - set mark
+'<reg> - jump to mark
+'' - jump to previous mark
+'. - jump to previous edit
+insert mode
+	CTRL + o - 1 command normal mode, then back to insert
 ctrl + b to move a page screen back or “up”
 ctrl + f to move a page screen front or “down”
 ctrl + u to move a ½ page screen up.
@@ -67,7 +92,7 @@ gt - next
 gT - back
 num + gt
 :tabmove N - move tab to N
-:tabmove +N - move to cur + N
+:tabm +N - move to cur + N
 ctrl + w
 	+t - top-left
 	+b - bot-right

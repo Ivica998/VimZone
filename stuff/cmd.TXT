@@ -9,8 +9,11 @@ as -o file.o file.S (then gcc -o file file.S)
 --check .exe for (debug) symbols
 objdump --syms <executable-file>
 
-
+cls - clear screen
+smtg | clip - redirect stdout to clipboard
+dir > file.txt 2>&1 - stderr to stdout
 --------------------------
 vscode
 CTRL + SHIFT + P - command pallete
+CTRL + P - quick open
 C/C++ Rescan Workspace - fix intellisense
