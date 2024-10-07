@@ -3,10 +3,10 @@
 [
     { "key": "ctrl+alt+m", "command": "workbench.action.toggleMaximizedPanel" },
     { "key": "ctrl+j", "command": "workbench.action.togglePanel" },
-    { "key": "shift+a", "command": "workbench.action.terminal.focusNext", "when": "terminalFocus" },
-    { "key": "shift+b", "command": "workbench.action.terminal.focusPrevious", "when": "terminalFocus" },
-    { "key": "shift+n", "command": "workbench.action.terminal.new", "when": "terminalFocus" },
-    { "key": "shift+c", "command": "workbench.action.terminal.kill", "when": "terminalFocus" },
+    { "key": "ctrl+alt+k", "command": "workbench.action.terminal.focusNext", "when": "terminalFocus" },
+    { "key": "ctrl+alt+j", "command": "workbench.action.terminal.focusPrevious", "when": "terminalFocus" },
+    { "key": "ctrl+alt+n", "command": "workbench.action.terminal.new", "when": "terminalFocus" },
+    { "key": "ctrl+alt+d", "command": "workbench.action.terminal.kill", "when": "terminalFocus" },
    
     
 // j/k to move between split terminals, h to move back to the editor
@@ -36,4 +36,22 @@
     { "key" : "ctrl+n", "command": "explorer.newFile", "when": "explorerViewletFocus" },
     { "key" : "ctrl+shift+n", "command": "explorer.newFolder", "when": "explorerViewletFocus" },
 //    { "key" : "ctrl+shift+n", "command": "workbench.action.newWindow", "when": "!explorerViewletFocus" },
+
+        // move b/w buffers
+        {
+            "key": "shift+ctrl+h",
+            "command": "vim.remap",
+            "args": {
+                "after": [":", "t", "a", "b", "m", " ", "-", "1", "<CR>"]
+            },
+            "when": "editorTextFocus"
+        },
+        {
+            "key": "shift+ctrl+l",
+            "command": "vim.remap",
+            "args": {
+                "after": [":", "t", "a", "b", "m", " ", "+", "1", "<CR>"]
+            },
+            "when": "editorTextFocus"
+        }
 ]
